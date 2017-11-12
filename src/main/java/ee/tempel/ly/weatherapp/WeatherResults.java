@@ -26,4 +26,9 @@ public class WeatherResults {
         this.threeDayReport = ThreeDayReport;
         this.coordinates = Coordinates;
     }
+
+
+    public String toString(String name) {
+        return "WeatherResults "+name+"{" +"temperature=" + temperature +", threeDayReport=" + threeDayReport +", coordinates=" + coordinates +'}';
+    }
 }

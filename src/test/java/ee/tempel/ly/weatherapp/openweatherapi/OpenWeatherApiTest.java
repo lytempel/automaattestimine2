@@ -1,6 +1,5 @@
 package ee.tempel.ly.weatherapp.openweatherapi;
 
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mockito;
@@ -22,7 +21,7 @@ public class OpenWeatherApiTest {
 
     @Test
     public void getCurrent() throws Exception {
-        when(httpClient.getCurrentWeather(anyString(), anyString()))
+        when(httpClient.getCurrentWeather(anyString()))
                 .thenReturn(new OpenWeatherCurrentWeatherResponse());
     }
 
