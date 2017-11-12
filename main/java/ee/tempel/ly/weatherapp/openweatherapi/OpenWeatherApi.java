@@ -3,6 +3,8 @@ package ee.tempel.ly.weatherapp.openweatherapi;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Consumer;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 
 import ee.tempel.ly.weatherapp.WeatherApi;
@@ -22,14 +24,15 @@ public class OpenWeatherApi implements WeatherApi {
         this.httpClient = httpClient;
     }
 
-    public CurrentWeatherReport getCurrent(String city, String countryCode, Constants.Unit unit) throws IOException {
-        OpenWeatherCurrentWeatherResponse response = httpClient.getCurrentWeather(city, countryCode, unit);
+    public CurrentWeatherReport getCurrent(String city, String countryCode) throws IOException {
+        OpenWeatherCurrentWeatherResponse response = httpClient.getCurrentWeather(city, countryCode);
         return new CurrentWeatherReport(response.main.temp, response.name, response.sys.country,
                 new Coordinates(response.coord.lat, response.coord.lon));
     }
 
-    public MultiDayWeatherReport getForecast(String city, String countryCode, Constants.Unit unit) throws IOException {
-        OpenWeatherForecastResponse response = httpClient.getForecast(city, countryCode, unit);
+    public MultiDayWeatherReport getForecast(String city, String countryCode) throws IOException {
+        OpenWeatherForecastResponse response = httpClient.getForecast(city, countryCode);
+
 
         return new MultiDayWeatherReport(
                 response.list.stream()

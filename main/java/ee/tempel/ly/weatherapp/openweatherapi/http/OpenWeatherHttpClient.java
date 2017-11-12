@@ -16,7 +16,7 @@ import static ee.tempel.ly.weatherapp.openweatherapi.util.OpenWeatherConstants.A
 
 public class OpenWeatherHttpClient {
 
-    public OpenWeatherCurrentWeatherResponse getCurrentWeather(String city, String countryCode, Constants.Unit unit) throws IOException {
+    public OpenWeatherCurrentWeatherResponse getCurrentWeather(String city, String countryCode) throws IOException {
 
         String url = MessageFormat.format("http://api.openweathermap.org/data/2.5/weather?APPID={0}&q={1}", API_KEY, city+","+countryCode);
         Reader reader = new InputStreamReader(new URL(url).openStream());
@@ -24,7 +24,7 @@ public class OpenWeatherHttpClient {
         Gson gson = new Gson();
         return gson.fromJson(reader, OpenWeatherCurrentWeatherResponse.class);
     }
-    public OpenWeatherForecastResponse getForecast(String city, String countryCode, Constants.Unit unit) throws IOException {
+    public OpenWeatherForecastResponse getForecast(String city, String countryCode) throws IOException {
 
         String url = MessageFormat.format("http://api.openweathermap.org/data/2.5/forecast?APPID={0}&q={1}", API_KEY, city+","+countryCode);
         Reader reader = new InputStreamReader(new URL(url).openStream());

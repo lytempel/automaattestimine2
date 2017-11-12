@@ -11,20 +11,18 @@ import ee.tempel.ly.weatherapp.model.SingleDayWeatherReport;
 import ee.tempel.ly.weatherapp.openweatherapi.OpenWeatherApi;
 import ee.tempel.ly.weatherapp.openweatherapi.http.OpenWeatherHttpClient;
 
-import static ee.tempel.ly.weatherapp.util.Constants.Unit.IMPERIAL;
-import static ee.tempel.ly.weatherapp.util.Constants.Unit.METRIC;
 
 public class WeatherAppTest {
 
     private WeatherResults query;
 
     private void assertReasonableTemperature(double temp){
-        Assert.assertTrue(-100 <= temp && temp <= 100);
+        Assert.assertTrue(173 <= temp && temp <= 373);
     }
 
     @Before
     public void setUp() throws Exception {
-        query = new WeatherApp(new OpenWeatherApi(new OpenWeatherHttpClient())).query("Tallinn", "EE", METRIC);
+        query = new WeatherApp(new OpenWeatherApi(new OpenWeatherHttpClient())).query("Tallinn", "EE");
     }
 
     @Test
@@ -76,20 +74,6 @@ public class WeatherAppTest {
         Assert.assertNotNull(first);
         Assert.assertNotNull(second);
         Assert.assertNotNull(third);
-    }
-
-    @Test
-    public void testCurrentTemperatureMatchesInBothUnits() throws Exception {
-        double tempC = query.getTemperature();
-        double tempF = new WeatherApp(new OpenWeatherApi(new OpenWeatherHttpClient()))
-                .query("Tallinn", "EE", IMPERIAL)
-                .getTemperature();
-
-        double expected = (tempC * 1.8) + 32;
-        double min = expected - 2;
-        double max = expected + 2;
-        Assert.assertTrue(min <= tempF && tempF <= max);
-
     }
 
     @Test
