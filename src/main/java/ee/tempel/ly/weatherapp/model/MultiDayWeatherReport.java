@@ -18,8 +18,12 @@ public class MultiDayWeatherReport implements Iterable<SingleDayWeatherReport>{
     public List<SingleDayWeatherReport> getDay(int i){
         return this.reports.subList(8*i, 8*(i+1));
     }
-
-
+    public double getMaxForDay(int i){
+        return this.getDay(i).stream().mapToDouble(r -> r.getMaxTemperature()).max().getAsDouble();
+    }
+    public double getMinForDay(int i){
+        return this.getDay(i).stream().mapToDouble(r -> r.getMinTemperature()).min().getAsDouble();
+    }
 
     @Override
     public Iterator<SingleDayWeatherReport> iterator() {

@@ -36,9 +36,9 @@ public class WeatherApp {
         for (int i = 0; i < 3; i++) {
             System.out.println("Day "+i);
             System.out.print("Min: ");
-            System.out.println(res.getThreeDayReport().getDay(i).stream().mapToDouble(r -> r.getMinTemperature()).min().getAsDouble());
+            System.out.println(res.getThreeDayReport().getMinForDay(i));
             System.out.print("Max: ");
-            System.out.println(res.getThreeDayReport().getDay(i).stream().mapToDouble(r -> r.getMaxTemperature()).max().getAsDouble());
+            System.out.println(res.getThreeDayReport().getMaxForDay(i));
         }
 
     }
