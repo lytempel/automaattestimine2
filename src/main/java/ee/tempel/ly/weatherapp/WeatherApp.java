@@ -16,30 +16,11 @@ public class WeatherApp {
         this.openWeatherApi = openWeatherApi;
     }
 
-    public WeatherResults query(String city, String countryCode) throws IOException {
+    public WeatherResults query(String city) throws IOException {
         openWeatherApi = new OpenWeatherApi(new OpenWeatherHttpClient());
-        MultiDayWeatherReport forecast = openWeatherApi.getForecast(city, countryCode);
-        CurrentWeatherReport weather = openWeatherApi.getCurrent(city, countryCode);
+        MultiDayWeatherReport forecast = openWeatherApi.getForecast(city);
+        CurrentWeatherReport weather = openWeatherApi.getCurrent(city);
         return new WeatherResults(weather.getCurrentTemperature(), forecast, weather.getCoordinates());
     }
 
-    public static void main(String[] args) throws IOException {
-        WeatherResults res = new WeatherApp(new OpenWeatherApi(new OpenWeatherHttpClient())).query("Tallinn", "ee");
-        System.out.print("Coordinates: ");
-        System.out.print(res.getCoordinates().getLatitude());
-        System.out.print("  ,   ");
-        System.out.println(res.getCoordinates().getLongitude());
-
-        System.out.print("Temperature: ");
-        System.out.println(res.getTemperature());
-        System.out.println("Individual days (?) (hours?)");
-        for (int i = 0; i < 3; i++) {
-            System.out.println("Day "+i);
-            System.out.print("Min: ");
-            System.out.println(res.getThreeDayReport().getMinForDay(i));
-            System.out.print("Max: ");
-            System.out.println(res.getThreeDayReport().getMaxForDay(i));
-        }
-
-    }
 }

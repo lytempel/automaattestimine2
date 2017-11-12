@@ -22,7 +22,7 @@ public class WeatherAppTest {
 
     @Before
     public void setUp() throws Exception {
-        query = new WeatherApp(new OpenWeatherApi(new OpenWeatherHttpClient())).query("Tallinn", "EE");
+        query = new WeatherApp(new OpenWeatherApi(new OpenWeatherHttpClient())).query("Tallinn");
     }
 
     @Test

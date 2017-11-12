@@ -1,0 +1,4 @@
+WeatherResults Tallinn{temperature=277.15, threeDayReport=ee.tempel.ly.weatherapp.model.MultiDayWeatherReport@2decdb, coordinates=ee.tempel.ly.weatherapp.model.Coordinates@f0a63f}
+WeatherResults Alaska{temperature=262.15, threeDayReport=ee.tempel.ly.weatherapp.model.MultiDayWeatherReport@161bd48, coordinates=ee.tempel.ly.weatherapp.model.Coordinates@1bd815b}
+WeatherResults New York{temperature=272.39, threeDayReport=ee.tempel.ly.weatherapp.model.MultiDayWeatherReport@1f4c3, coordinates=ee.tempel.ly.weatherapp.model.Coordinates@1637f22}
+WeatherResults Moskva{temperature=289.886, threeDayReport=ee.tempel.ly.weatherapp.model.MultiDayWeatherReport@126097b, coordinates=ee.tempel.ly.weatherapp.model.Coordinates@2efe5d}
