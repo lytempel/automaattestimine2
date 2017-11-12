@@ -8,7 +8,11 @@ import org.junit.Test;
 import ee.tempel.ly.weatherapp.model.Coordinates;
 import ee.tempel.ly.weatherapp.model.MultiDayWeatherReport;
 import ee.tempel.ly.weatherapp.model.SingleDayWeatherReport;
-import ee.tempel.ly.weatherapp.util.Constants;
+import ee.tempel.ly.weatherapp.openweatherapi.OpenWeatherApi;
+import ee.tempel.ly.weatherapp.openweatherapi.http.OpenWeatherHttpClient;
+
+import static ee.tempel.ly.weatherapp.util.Constants.Unit.IMPERIAL;
+import static ee.tempel.ly.weatherapp.util.Constants.Unit.METRIC;
 
 public class WeatherAppTest {
 
@@ -20,7 +24,7 @@ public class WeatherAppTest {
 
     @Before
     public void setUp() throws Exception {
-        query = new WeatherApp().query("Tallinn", "EE", Constants.METRIC);
+        query = new WeatherApp(new OpenWeatherApi(new OpenWeatherHttpClient())).query("Tallinn", "EE", METRIC);
     }
 
     @Test
@@ -43,9 +47,9 @@ public class WeatherAppTest {
     public void test3DayTemperaturesInReportedRange() throws Exception {
         MultiDayWeatherReport report = query.getThreeDayReport();
 
-        SingleDayWeatherReport[] reports = {report.getDay(0), report.getDay(1), report.getDay(2)};
+        SingleDayWeatherReport[] reports = {report.getReport(0), report.getReport(1), report.getReport(2)};
         for (SingleDayWeatherReport dayReport : reports) {
-            double current = dayReport.getCurrentTemperatures();
+            double current = dayReport.getCurrentTemperature();
             double min = dayReport.getMinTemperature();
             double max = dayReport.getMaxTemperature();
             Assert.assertTrue(min <= current && current <= max);
@@ -56,7 +60,7 @@ public class WeatherAppTest {
     public void test3DayTemperatureRangesMinMaxInOrder() throws Exception {
         MultiDayWeatherReport report = query.getThreeDayReport();
 
-        SingleDayWeatherReport[] reports = {report.getDay(0), report.getDay(1), report.getDay(2)};
+        SingleDayWeatherReport[] reports = {report.getReport(0), report.getReport(1), report.getReport(2)};
         for (SingleDayWeatherReport dayReport : reports) {
             Assert.assertTrue(dayReport.getMinTemperature() <= dayReport.getMaxTemperature());
         }
@@ -66,9 +70,9 @@ public class WeatherAppTest {
     public void test3DayTemperatureRangeContainsValues() throws Exception {
         MultiDayWeatherReport report = query.getThreeDayReport();
 
-        SingleDayWeatherReport first = report.getDay(0);
-        SingleDayWeatherReport second = report.getDay(1);
-        SingleDayWeatherReport third = report.getDay(2);
+        SingleDayWeatherReport first = report.getReport(0);
+        SingleDayWeatherReport second = report.getReport(1);
+        SingleDayWeatherReport third = report.getReport(2);
         Assert.assertNotNull(first);
         Assert.assertNotNull(second);
         Assert.assertNotNull(third);
@@ -77,8 +81,8 @@ public class WeatherAppTest {
     @Test
     public void testCurrentTemperatureMatchesInBothUnits() throws Exception {
         double tempC = query.getTemperature();
-        double tempF = new WeatherApp()
-                .query("Tallinn", "EE", Constants.IMPERIAL)
+        double tempF = new WeatherApp(new OpenWeatherApi(new OpenWeatherHttpClient()))
+                .query("Tallinn", "EE", IMPERIAL)
                 .getTemperature();
 
         double expected = (tempC * 1.8) + 32;

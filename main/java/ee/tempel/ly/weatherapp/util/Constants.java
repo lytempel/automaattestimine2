@@ -1,5 +1,8 @@
 package ee.tempel.ly.weatherapp.util;
 
-public enum Constants {
-    METRIC, IMPERIAL
+public interface Constants {
+
+    public static enum Unit {
+        METRIC, IMPERIAL
+    }
 }
