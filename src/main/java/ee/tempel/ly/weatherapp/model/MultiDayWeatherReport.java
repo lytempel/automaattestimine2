@@ -39,4 +39,11 @@ public class MultiDayWeatherReport implements Iterable<SingleDayWeatherReport>{
     public Spliterator<SingleDayWeatherReport> spliterator() {
         return reports.spliterator();
     }
+
+    @Override
+    public String toString() {
+        return "MultiDayWeatherReport{" +
+                "reports=" + reports +
+                '}';
+    }
 }

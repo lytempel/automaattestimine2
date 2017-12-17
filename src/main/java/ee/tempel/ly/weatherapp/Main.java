@@ -13,8 +13,8 @@ public class Main {
     private static WeatherApp weatherApp = new WeatherApp(new OpenWeatherApi(new OpenWeatherHttpClient()));
 
     public static void main(String[] args) throws IOException {
-        processInteractively();
-        // processFiles();
+        //processInteractively();
+        processFiles();
     }
 
     private static void processInteractively() throws IOException {

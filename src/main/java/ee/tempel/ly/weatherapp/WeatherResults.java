@@ -3,6 +3,8 @@ package ee.tempel.ly.weatherapp;
 import ee.tempel.ly.weatherapp.model.Coordinates;
 import ee.tempel.ly.weatherapp.model.MultiDayWeatherReport;
 
+import static java.lang.Math.round;
+
 public class WeatherResults {
     double temperature;
     MultiDayWeatherReport threeDayReport;
@@ -22,7 +24,7 @@ public class WeatherResults {
 
     public WeatherResults(double Temperature, MultiDayWeatherReport ThreeDayReport, Coordinates Coordinates) {
 
-        this.temperature = Temperature;
+        this.temperature = round(Temperature-272.15);
         this.threeDayReport = ThreeDayReport;
         this.coordinates = Coordinates;
     }
