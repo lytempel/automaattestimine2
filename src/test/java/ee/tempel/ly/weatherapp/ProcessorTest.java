@@ -32,9 +32,9 @@ public class ProcessorTest {
     @Before
     public void setUp() throws Exception {
         ArrayList<SingleDayWeatherReport> reports = new ArrayList<>();
-        reports.add(new SingleDayWeatherReport(0,5,2));
-        reports.add(new SingleDayWeatherReport(5,15,8));
-        reports.add(new SingleDayWeatherReport(15,25,18));
+        reports.add(new SingleDayWeatherReport(0,5));
+        reports.add(new SingleDayWeatherReport(5,15));
+        reports.add(new SingleDayWeatherReport(15,25));
         exampleResults = new WeatherResults(
                 -2,
                 new MultiDayWeatherReport(reports),

@@ -41,8 +41,8 @@ public class OpenWeatherApi implements WeatherApi {
                         .sorted()
                         .map(i -> new SingleDayWeatherReport(
                                         forecastsByDay.get(i).stream().mapToDouble(fc -> fc.main.temp_min).min().getAsDouble(),
-                                        forecastsByDay.get(i).stream().mapToDouble(fc -> fc.main.temp_max).max().getAsDouble(),
-                                        forecastsByDay.get(i).stream().mapToDouble(fc -> fc.main.temp).average().getAsDouble())
+                                        forecastsByDay.get(i).stream().mapToDouble(fc -> fc.main.temp_max).max().getAsDouble())
+
                         )
                         .limit(3) // Note: OpenWeather returns 5 days of forecast
                         .collect(Collectors.toList())

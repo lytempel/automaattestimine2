@@ -47,10 +47,8 @@ public class WeatherAppTest {
 
         SingleDayWeatherReport[] reports = {report.getReport(0), report.getReport(1), report.getReport(2)};
         for (SingleDayWeatherReport dayReport : reports) {
-            double current = dayReport.getCurrentTemperature();
             double min = dayReport.getMinTemperature();
             double max = dayReport.getMaxTemperature();
-            Assert.assertTrue(min <= current && current <= max);
         }
     }
 
