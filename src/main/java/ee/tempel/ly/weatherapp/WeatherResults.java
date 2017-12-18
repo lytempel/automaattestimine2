@@ -31,6 +31,6 @@ public class WeatherResults {
 
 
     public String toString(String name) {
-        return "WeatherResults "+name+"{" +"temperature=" + temperature +", threeDayReport=" + threeDayReport +", coordinates=" + coordinates +'}';
+        return "WeatherResults "+name+" {" +"temperature=" + temperature +", threeDayReport=" + threeDayReport +", " + coordinates +'}';
     }
 }

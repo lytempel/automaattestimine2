@@ -27,10 +27,9 @@ public final class SingleDayWeatherReport {
 
     @Override
     public String toString() {
-        return "SingleDayWeatherReport{" +
-                "minTemperature=" + minTemperature +
+        return  "minTemperature=" + minTemperature +
                 ", maxTemperature=" + maxTemperature +
                 ", currentTemperature=" + currentTemperature +
-                '}';
+                ';' + ' ';
     }
 }

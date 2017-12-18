@@ -23,7 +23,6 @@ public class Main {
     }
     private static void processFiles() throws IOException {
         FileReader in = new FileReader(new File("input.txt"));
-        FileWriter out = new FileWriter(new File("output.txt"));
-        new Processor(weatherApp).process(in, out);
+        new Processor(weatherApp).processIntoSeparateFiles(in);
     }
 }

@@ -16,15 +16,12 @@ public class Processor {
         this.api = api;
     }
 
-    public String sanitizeFilename(String inputName) {
-        return inputName.replaceAll("[^a-zA-Z0-9-_\\.]", "_");
-    }
 
     public void processIntoSeparateFiles(Readable input) throws IOException {
         Scanner in = new Scanner(input);
         while(in.hasNext()){
             String city = in.nextLine();
-            FileWriter writer = new FileWriter(new File(sanitizeFilename(city) + ".txt"));
+            FileWriter writer = new FileWriter(new File(city + ".txt"));
             writer.append(api.query(city).toString(city));
             writer.append("\n");
             writer.flush();

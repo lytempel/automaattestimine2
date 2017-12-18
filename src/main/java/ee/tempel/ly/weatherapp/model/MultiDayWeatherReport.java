@@ -42,8 +42,7 @@ public class MultiDayWeatherReport implements Iterable<SingleDayWeatherReport>{
 
     @Override
     public String toString() {
-        return "MultiDayWeatherReport{" +
-                "reports=" + reports +
+        return "Day 1: " + reports.get(0) + "Day 2: " + reports.get(1) + "Day 3: " + reports.get(2) +
                 '}';
     }
 }
