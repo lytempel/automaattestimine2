@@ -33,10 +33,10 @@ public class ProcessorTest {
     public void setUp() throws Exception {
         ArrayList<SingleDayWeatherReport> reports = new ArrayList<>();
         reports.add(new SingleDayWeatherReport(0,5,2));
-        reports.add(new SingleDayWeatherReport(5,15,13));
-        reports.add(new SingleDayWeatherReport(25,100,99));
+        reports.add(new SingleDayWeatherReport(5,15,8));
+        reports.add(new SingleDayWeatherReport(15,25,18));
         exampleResults = new WeatherResults(
-                270,
+                -2,
                 new MultiDayWeatherReport(reports),
                 new Coordinates(0, 0)
         );

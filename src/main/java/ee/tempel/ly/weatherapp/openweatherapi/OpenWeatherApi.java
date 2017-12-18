@@ -43,7 +43,6 @@ public class OpenWeatherApi implements WeatherApi {
                                         forecastsByDay.get(i).stream().mapToDouble(fc -> fc.main.temp_min).min().getAsDouble(),
                                         forecastsByDay.get(i).stream().mapToDouble(fc -> fc.main.temp_max).max().getAsDouble(),
                                         forecastsByDay.get(i).stream().mapToDouble(fc -> fc.main.temp).average().getAsDouble())
-                                // Note: Average temperature of the day is not exactly current ↑
                         )
                         .limit(3) // Note: OpenWeather returns 5 days of forecast
                         .collect(Collectors.toList())

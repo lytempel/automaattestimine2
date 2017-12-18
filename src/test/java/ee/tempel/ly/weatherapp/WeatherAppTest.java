@@ -17,7 +17,7 @@ public class WeatherAppTest {
     private WeatherResults query;
 
     private void assertReasonableTemperature(double temp){
-        Assert.assertTrue(173 <= temp && temp <= 373);
+        Assert.assertTrue(-100 <= temp && temp <= 100);
     }
 
     @Before
